@@ -1,0 +1,35 @@
+﻿@model IEnumerable<InCollegeWeb.Models.ClaimStudent>
+@{
+    ViewBag.Title = "Заявки на поступление";
+}
+    <h2>@ViewBag.Title.</h2>
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Название</th>
+                        <th scope="col">Дата подачи</th>
+                        <th scope="col">Удаление</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var claim in Model)
+                    {
+                        <tr>
+                            <th>@claim.Users.Lastname @claim.Users.Firstname @claim.Users.Patronymic</th>
+                            <th>@claim.DateCreate</th>
+                            <td>@Html.ActionLink("Удалить", "Delete", "ClaimStudent", new { id = claim.Id}, new { @class = "btn btn-danger" })</td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }

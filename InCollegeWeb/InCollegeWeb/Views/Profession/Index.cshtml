@@ -1,0 +1,36 @@
+﻿@model IEnumerable<InCollegeWeb.Models.Profession>
+@{
+    ViewBag.Title = "Все специальность";
+
+}
+<h2>@ViewBag.Title.</h2>
+<div class="row">
+    
+    <div class="col-md-8">
+        @Html.ActionLink("Добавить новую специальность", "Add", "Profession", null, new { @class = "btn btn-success"})
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Название</th>
+                    <th scope="col">Удаление</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var prof in Model)
+                {
+                <tr>
+                    <th>@prof.Name</th>
+                    <td>@Html.ActionLink("Удалить", "Delete", "Profession", null, new { @class = "btn btn-danger"})</td>
+                </tr>
+                }
+
+            </tbody>
+        </table>
+    </div>
+   
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
